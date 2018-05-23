@@ -1,0 +1,31 @@
+<svg id="svg10306" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 530.67 338">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #cccccc;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path" transform="translate(15.67 88)">
+      <path class="cls-1" d="M147.82,3.84,105.93,109.72,89,19.69c-2-10-9.84-15.85-18.56-15.85H2L1,8.36c14.06,3.05,30,8,39.7,13.23,5.92,3.22,7.61,6,9.56,13.67L82.35,159.39h42.53L190.08,3.84H147.82"/>
+    </clipPath>
+  </defs>
+  <title>logo-detail-a</title>
+  <g id="layer1">
+    <g id="g10267">
+      <g>
+        <path class="cls-1" d="M147.82,3.84,105.93,109.72,89,19.69c-2-10-9.84-15.85-18.56-15.85H2L1,8.36c14.06,3.05,30,8,39.7,13.23,5.92,3.22,7.61,6,9.56,13.67L82.35,159.39h42.53L190.08,3.84H147.82" transform="translate(15.67 88)"/>
+        <g class="cls-2">
+          <g id="g10269">
+            <g id="g10275">
+              <path id="path10283" class="cls-1" d="M-15.67,38.24,416.65-88,515,123.76,82.69,250" transform="translate(15.67 88)"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+@import '../node_modules/scss-theme-example/dist/index.css';
+
+body {
+  margin: 0;
+  padding: 0;
+}
