@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
+
+const Inpt = styled.input`
+  display: block;
+  box-shadow: none;
+  outline: none;
+  font-size: inherit;
+  border: var(--hiq-input-border-width, 1px) solid var(--hiq-input-border-color, var(--hiq-gray-lighter, #e3e5e8));
+  width: 100%;
+  font-weight: var(--hiq-font-weight-base, 400);
+  color: var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, #17191c)));
+  background-color: var(--hiq-input-background-color, white);
+  border-radius: var(--hiq-input-border-radius, var(--hiq-border-radius, 0.2rem));
+  height: var(--hiq-input-height, 2.5rem);
+  padding: var(--hiq-input-padding-vertical, 0) var(--hiq-input-padding-horizontal, 0.75rem);
+`;
 
 class Input extends Component {
   constructor (props) {
@@ -72,18 +89,18 @@ class Input extends Component {
     //   // console.log('hide default browser tooltip');
     // };
 
-    if (this.state.focused &&
-        (!input.checkValidity() ||
-          (input.required && !input.value.trim().length)
-        )
-      ) {
-      this.setState({valid: false});
-      input.setAttribute('aria-invalid', true);
-      return;
-    }
+    // if (this.state.focused &&
+    //     (!input.checkValidity() ||
+    //       (input.required && !input.value.trim().length)
+    //     )
+    //   ) {
+    //   this.setState({valid: false});
+    //   input.setAttribute('aria-invalid', true);
+    //   return;
+    // }
 
-    this.setState({valid: true});
-    input.setAttribute('aria-invalid', false);
+    // this.setState({valid: true});
+    // input.setAttribute('aria-invalid', false);
   }
 
   render () {
@@ -124,7 +141,7 @@ class Input extends Component {
       onFocus={this.handleFocus}
       onBlur={this.handleBlur} >
       <label htmlFor={id}>{label}</label>
-      <input
+      <Inpt
         aria-required={required}
         className={this.state.valid ? 'is-success' : 'is-error'}
         type={type}

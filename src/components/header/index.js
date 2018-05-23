@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import logo from '../../logo.svg';
 
-const Head = styled.header`
+const Headr = styled.header`
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -22,13 +22,13 @@ class Header extends Component {
   render () {
     const baseUrl = process.env.REACT_APP_BASE_URL;
 
-    return <Head>
+    return <Headr>
       <div>
         <a href={baseUrl}>
           <img src={logo} alt='logo text' />
         </a>
       </div>
-    </Head>;
+    </Headr>;
   }
 }
 
