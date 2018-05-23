@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider, subscribe } from 'react-contextual';
 
-// import './index.css';
+import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 
 // Components
