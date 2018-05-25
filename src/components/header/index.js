@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import logo from '../../logo.svg';
 
-const Headr = styled.header`
+const StyledHeader = styled.header`
   box-sizing: border-box;
   background-color: var(--hiq-color-primary);
   display: flex;
@@ -39,13 +39,13 @@ const Link = styled.a`
 
 class Header extends Component {
   render () {
-    return <Headr>
+    return <StyledHeader>
       <Container isFluid='true'>
         <Link href={process.env.REACT_APP_BASE_URL}>
           <Logo src={logo} alt='V' />
         </Link>
       </Container>
-    </Headr>;
+    </StyledHeader>;
   }
 }
 
