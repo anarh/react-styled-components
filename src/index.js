@@ -4,50 +4,29 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider, subscribe } from 'react-contextual';
 
 import './index.css';
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 // Components
 import header from './components/header';
-import sideNavigation from './components/side-navigation';
 
 // Pages
-// import index from './pages/index';
-// import login from './pages/login';
-import createAccount from './pages/create-account';
-// import settings from './pages/settings';
+import index from './pages/index';
+import thankYou from './pages/thank-you';
 
 import { initialState, actions } from './state';
 
 const Header = subscribe()(header);
-const SideNavigation = subscribe()(sideNavigation);
-
-// const Index = subscribe()(index);
-// const Login = subscribe()(login);
-// const Settings = subscribe()(settings);
-const CreateAccount = subscribe()(createAccount);
-
-// const ProtectedRoute = subscribe()(({
-//   component: Component,
-//   isAuthenticated,
-//   ...rest
-// }) => (
-//   <Route
-//     {...rest}
-//     render={props =>
-//       isAuthenticated
-//         ? (<Component {...props} />)
-//         : (<Redirect to={{ pathname: '/login', state: { from: props.location } }} />)}
-//   />
-// ));
+const Index = subscribe()(index);
+const ThankYou = subscribe()(thankYou);
 
 ReactDOM.render(
   <Provider initialState={initialState} actions={actions} >
     <BrowserRouter>
       <React.Fragment>
         <Header />
-        <SideNavigation />
         <main className='main-content'>
-          <Route exact path='/' component={CreateAccount} />
+          <Route exact path='/' component={Index} />
+          <Route exact path='/thank-you' component={ThankYou} />
         </main>
       </React.Fragment>
     </BrowserRouter>
@@ -55,22 +34,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// ReactDOM.render(
-//   <Provider initialState={initialState} actions={actions} >
-//     <BrowserRouter>
-//       <React.Fragment>
-//         <Header />
-//         <SideNavigation />
-//         <main className='main-content'>
-//           <ProtectedRoute exact path='/' component={Index} />
-//           <Route path='/login' component={Login} />
-//           <Route path='/create-account' component={CreateAccount} />
-//           <Route path='/settings' component={Settings} />
-//         </main>
-//       </React.Fragment>
-//     </BrowserRouter>
-//   </Provider>,
-//   document.getElementById('root')
-// );
-
-// registerServiceWorker();
+registerServiceWorker();
