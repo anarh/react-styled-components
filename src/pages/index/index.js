@@ -1,8 +1,72 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Button from '../../components/button';
 import Input from '../../components/input';
+
+const StyledContainer = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(var(--hiq-max-container-width,50rem) - (var(--hiq-container-horizontal-gap,2rem) * 2));
+  width: calc(100% - (var(--hiq-container-horizontal-gap,2rem) * 2));
+
+  h1 {
+    font-size: var(--hiq-font-size-1,2.5rem);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-weight: 300;
+  }
+`;
+
+const StyledSection = styled.section`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 2rem;
+  max-width: 100%;
+  order: 1;
+  padding-bottom: 3rem;
+
+  @media (min-width: 800px) {
+    flex: 1 1;
+    margin-top: 6rem;
+
+    h2 {
+      margin-top: calc((var(--navbar-height) + 3rem) * -1 + 4rem);
+      padding-top: calc(var(--navbar-height) + 3rem);
+    }
+  }
+`;
+
+const StyledWell = styled.div`
+  border: 1px solid var(--hiq-gray-lighter);
+  border-radius: .25rem .25rem;
+  margin-top: 1.25rem;
+  padding: 2rem;
+`;
+
+const StyledFormGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  > div {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+`;
 
 class Index extends Component {
   constructor (props) {
@@ -118,11 +182,11 @@ class Index extends Component {
       return this.errorMessages.required;
     };
 
-    return <div className='container'>
-      <section className='doc-content'>
-        <div className={`hiq-well hiq-create-account-well`}>
-          <h1 className='login-form-header'>Create Account</h1>
-          <p className='is-login-form-message'>Create a merchant account with the following information</p>
+    return <StyledContainer>
+      <StyledSection>
+        <StyledWell>
+          <h1>Create Account</h1>
+          <p>Create a merchant account with the following information</p>
           {
             this.props.createAccount.isError && (
               <p className={`is-form-error`} role='alert' aria-atomic='true'>
@@ -133,7 +197,7 @@ class Index extends Component {
 
           <form onSubmit={(e) => { this.handleSubmit(e); }} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
             <h2>Merchant</h2>
-            <div>
+            <StyledFormGroup>
               <Input
                 autoFocus
                 autoComplete='business-name'
@@ -157,9 +221,9 @@ class Index extends Component {
                 title='required'
                 type='text'
               />
-            </div>
+            </StyledFormGroup>
             <h2>Admin Account</h2>
-            <div>
+            <StyledFormGroup>
               <Input
                 autoComplete='Username'
                 checkValidity={this.state.checkValidity}
@@ -184,8 +248,8 @@ class Index extends Component {
                 title='required'
                 type='password'
               />
-            </div>
-            <div>
+            </StyledFormGroup>
+            <StyledFormGroup>
               <Input
                 autoComplete='given-name'
                 checkValidity={this.state.checkValidity}
@@ -211,8 +275,8 @@ class Index extends Component {
                 title='required'
                 type='text'
               />
-            </div>
-            <div>
+            </StyledFormGroup>
+            <StyledFormGroup>
               <Input
                 autoComplete='email'
                 checkValidity={this.state.checkValidity}
@@ -237,16 +301,16 @@ class Index extends Component {
                 title='required'
                 type='tel'
               />
-            </div>
+            </StyledFormGroup>
             <Button
+              isFullWidth
               type='submit'
-              className='is-full-width'
               label='Create Account'
             />
           </form>
-        </div>
-      </section>
-    </div>;
+        </StyledWell>
+      </StyledSection>
+    </StyledContainer>;
   }
 }
 

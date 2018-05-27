@@ -27,6 +27,12 @@
 body {
   margin: 0;
   padding: 0;
+  text-align: left;
+}
+
+p {
+  margin: 0 0 var(--hiq-block-element-margin-bottom,1rem);
+  padding: 0;
 }
 
 .is-unselectable{

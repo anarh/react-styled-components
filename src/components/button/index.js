@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import PropTypes from 'prop-types';
 
@@ -28,23 +28,28 @@ const StyledButton = styled.button`
     background-color: var(--hiq-button-hover-background-color, hsl(210, 100%, 40%));
     color: var(--hiq-button-hover-text-color, white);
   }
+
   &:focus,
   &:active {
     box-shadow: 0 0 0 var(--hiq-outline-width, 0.2rem) var(--hiq-outline-color, hsl(210, 100%, 85%));
   }
+
   &:focus {
     border-color: var(--hiq-button-focus-border-color, hsl(210, 100%, 50%));
     background-color: var(--hiq-button-focus-background-color, hsl(210, 100%, 50%));
     color: var(--hiq-button-focus-text-color, white);
   }
+
   &:active {
     border-color: var(--hiq-button-active-border-color, hsl(210, 100%, 30%));
     background-color: var(--hiq-button-active-background-color, hsl(210, 100%, 30%));
     color: var(--hiq-button-active-text-color, white);
   }
+
   &:visited {
     color: var(--hiq-button-text-color, white);
   }
+
   &:disabled,
   &[aria-disabled] {
     border-color: var(--hiq-disabled-border-color, transparent);
@@ -52,6 +57,12 @@ const StyledButton = styled.button`
     color: var(--hiq-disabled-text-color, var(--hiq-gray-light, hsl(220, 10%, 60%)));
     cursor: not-allowed;
   }
+
+
+  ${props => props.isFullWidth && css`
+    margin-top: 1rem;
+    width: 100%;
+  `}
 `;
 
 class Button extends Component {
@@ -67,6 +78,7 @@ class Button extends Component {
 
   render () {
     return <StyledButton onClick={this.handleClick}
+      isFullWidth={this.props.isFullWidth}
       disabled={this.props.disabled}
       type={this.props.type}
       className={this.props.className}
