@@ -2,82 +2,89 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-const StyledInput = styled.input`
-  background-color: var(--hiq-input-background-color, white);
-  border-radius: var(--hiq-input-border-radius, var(--hiq-border-radius, 0.2rem));
-  border: var(--hiq-input-border-width, 1px) solid var(--hiq-input-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%)));
-  color: var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%))));
-  display: block;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: var(--hiq-font-weight-base, 400);
-  height: var(--hiq-input-height, 2.5rem);
-  line-height: inherit;
-  margin: 0;
-  padding: var(--hiq-input-padding-vertical, 0) var(--hiq-input-padding-horizontal, 0.75rem);
-  transition: border-color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out), color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out), background-color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out);
-  width: 100%;
-  
+const StyledInputContainer = styled.div`
+  padding-bottom: 1.3em;
 
-  &[type='search'] {
-    outline-offset: -2px;
-    -webkit-appearance: none;
-  }
-
-  &::placeholder {
-    color: var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%)));
-  }
-
-  &:hover {
-    border-color: var(--hiq-input-hover-border-color, var(--hiq-input-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%))));
-    background-color: var(--hiq-input-hover-background-color, var(--hiq-input-background-color, white));
-    color: var(--hiq-input-hover-text-color, var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%)))));
+  > input {
+    background-color: var(--hiq-input-background-color, white);
+    border-radius: var(--hiq-input-border-radius, var(--hiq-border-radius, 0.2rem));
+    border: var(--hiq-input-border-width, 1px) solid var(--hiq-input-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%)));
+    color: var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%))));
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: var(--hiq-font-weight-base, 400);
+    height: var(--hiq-input-height, 2.5rem);
+    line-height: inherit;
+    margin: 0;
+    padding: var(--hiq-input-padding-vertical, 0) var(--hiq-input-padding-horizontal, 0.75rem);
+    transition: border-color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out), color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out), background-color var(--hiq-speed, 0.1s) var(--hiq-easing, ease-out);
+    width: 100%;
     
-    &::placeholder {
-      color: var(--hiq-input-hover-placeholder-color, var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%))));
+
+    &[type='search'] {
+      outline-offset: -2px;
+      -webkit-appearance: none;
     }
-  }
 
-  &:focus {
-    background-color: var(--hiq-input-focus-background-color, var(--hiq-input-background-color, white));
-    border-color: var(--hiq-input-focus-border-color, var(--hiq-color-primary, hsl(210, 100%, 50%)));
-    box-shadow: 0 0 0 var(--hiq-outline-width, 0.2rem) var(--hiq-outline-color, hsl(210, 100%, 85%));
-    color: var(--hiq-input-focus-text-color, var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%)))));
-    
     &::placeholder {
-      color: var(--hiq-input-focus-placeholder-color, var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%))));
+      color: var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%)));
     }
-  }
 
-  &:disabled,
-  &[aria-disabled],
-  &[readonly] {
-    border-color: var(--hiq-disabled-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%)));
-    background-color: var(--hiq-disabled-background-color, var(--hiq-gray-lightest, hsl(220, 10%, 95%)));
-    color: var(--hiq-disabled-text-color, var(--hiq-gray-light, hsl(220, 10%, 60%)));
-    
-    &::placeholder {
+    &:hover {
+      border-color: var(--hiq-input-hover-border-color, var(--hiq-input-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%))));
+      background-color: var(--hiq-input-hover-background-color, var(--hiq-input-background-color, white));
+      color: var(--hiq-input-hover-text-color, var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%)))));
+      
+      &::placeholder {
+        color: var(--hiq-input-hover-placeholder-color, var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%))));
+      }
+    }
+
+    &:focus {
+      background-color: var(--hiq-input-focus-background-color, var(--hiq-input-background-color, white));
+      border-color: var(--hiq-input-focus-border-color, var(--hiq-color-primary, hsl(210, 100%, 50%)));
+      box-shadow: 0 0 0 var(--hiq-outline-width, 0.2rem) var(--hiq-outline-color, hsl(210, 100%, 85%));
+      color: var(--hiq-input-focus-text-color, var(--hiq-input-text-color, var(--hiq-text-color, var(--hiq-gray-darker, hsl(220, 10%, 10%)))));
+      
+      &::placeholder {
+        color: var(--hiq-input-focus-placeholder-color, var(--hiq-input-placeholder-color, var(--hiq-gray, hsl(220, 10%, 40%))));
+      }
+    }
+
+    &:disabled,
+    &[aria-disabled],
+    &[readonly] {
+      border-color: var(--hiq-disabled-border-color, var(--hiq-gray-lighter, hsl(220, 10%, 90%)));
+      background-color: var(--hiq-disabled-background-color, var(--hiq-gray-lightest, hsl(220, 10%, 95%)));
       color: var(--hiq-disabled-text-color, var(--hiq-gray-light, hsl(220, 10%, 60%)));
+      
+      &::placeholder {
+        color: var(--hiq-disabled-text-color, var(--hiq-gray-light, hsl(220, 10%, 60%)));
+      }
     }
-  }
 
-  &:disabled {
-    cursor: not-allowed;
-  }
+    &:disabled {
+      cursor: not-allowed;
+    }
+/*
+    &:required:invalid:not(:focus) {
+      border-color: var(--hiq-input-invalid-border-color, var(--hiq-color-danger, hsl(352, 95%, 61%)));
+    }
+*/
+    &:required:invalid {
+      border: var(--hiq-input-border-width,1px) solid var(--hiq-input-border-color,var(--hiq-gray-lighter,#e3e5e8));
+    }
 
-  &:required:invalid:not(:focus) {
-    border-color: var(--hiq-input-invalid-border-color, var(--hiq-color-danger, hsl(352, 95%, 61%)));
-  }
+    &:required:valid:not(:focus) {
+      border-color: var(--hiq-input-valid-border-color, var(--hiq-color-success, hsl(158, 73%, 48%)));
+    }
 
-  &:required:valid:not(:focus) {
-    border-color: var(--hiq-input-valid-border-color, var(--hiq-color-success, hsl(158, 73%, 48%)));
+    ${props => props.isValid && css`
+      border-color: var(--hiq-color-success);
+    `}
   }
-
-  ${props => props.isValid && css`
-    border-color: var(--hiq-color-success);
-  `}
 `;
-
 
 const StyledLabel = styled.label`
   display: block;
@@ -92,6 +99,7 @@ const StyledError = styled.small`
   ${props => !props.isValid && css`
     color: var(--hiq-color-danger);
     display: block;
+    position: absolute;
   `}
 `;
 
@@ -111,34 +119,34 @@ class Input extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount = () => {
     if (this.props.defaultValue) {
       this.setState({
         focused: true
       });
     }
-  }
+  };
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps = (nextProps) => {
     if (nextProps.checkValidity) {
-      this.setValidity(this.innerInput);
+      this.setValidity();
     }
-  }
+  };
 
-  handleFocus (e) {
+  handleFocus = (e) => {
     e.preventDefault();
     this.setState({
       focused: true
     });
-  }
+  };
 
-  handleBlur (e) {
+  handleBlur = (e) => {
     e.preventDefault();
     this.setValidity(e.target);
     this.props.onBlur(e);
-  }
+  };
 
-  handleChange (e) {
+  handleChange = (e) => {
     e.preventDefault();
 
     this.setState({
@@ -151,10 +159,11 @@ class Input extends Component {
     }
 
     this.props.onChange(e);
-  }
+  };
 
-  setValidity (input) {
-    console.log(input);
+  setValidity = () => {
+    const input = this.input;
+
     if (this.state.focused &&
         (!input.checkValidity() ||
           (input.required && !input.value.trim().length)
@@ -195,16 +204,15 @@ class Input extends Component {
       defaultValue
     } = this.props;
 
-    return <div
-      className={`${className}`}
+    return <StyledInputContainer
       onChange={this.handleChange}
       onFocus={this.handleFocus}
-      onBlur={this.handleBlur} >
+      onBlur={this.handleBlur} 
+      isValid={this.state.valid}>
       <StyledLabel htmlFor={id}>
         {label}
       </StyledLabel>
-      <StyledInput
-        isValid={this.state.valid}
+      <input
         aria-required={required}
         type={type}
         autoCapitalize={autoCapitalize}
@@ -225,17 +233,17 @@ class Input extends Component {
         step={step}
         value={value}
         id={id}
-        innerRef={(innerInput) => { this.input = innerInput }}
         ref={(input) => { this.input = input; }}
       />
       {title &&
         <StyledError
           role='alert'
-          aria-atomic='true'>
+          aria-atomic='true'
+          isValid={this.state.valid}>
           {title}
         </StyledError>
       }
-    </div>;
+    </StyledInputContainer>;
   }
 }
 

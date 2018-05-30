@@ -34,7 +34,7 @@ const StyledSection = styled.section`
     margin-top: 6rem;
 
     h2 {
-      margin-top: calc((var(--navbar-height) + 3rem) * -1 + 4rem);
+      /* margin-top: calc((var(--navbar-height) + 3rem) * -1 + 4rem); */
       padding-top: calc(var(--navbar-height) + 3rem);
     }
   }
@@ -170,18 +170,6 @@ class Index extends Component {
   }
 
   render () {
-    const inputErrorMessage = () => {
-      if (this.state.usernameAlreadyExists) {
-        return this.errorMessages.userExists;
-      }
-
-      if (this.state.emailAlreadyExists) {
-        return this.errorMessages.emailExists;
-      }
-
-      return this.errorMessages.required;
-    };
-
     return <StyledContainer>
       <StyledSection>
         <StyledWell>
@@ -195,7 +183,11 @@ class Index extends Component {
             )
           }
 
-          <form onSubmit={(e) => { this.handleSubmit(e); }} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
+          <form
+            onSubmit={(e) => { this.handleSubmit(e); }}
+            className={`${this.state.submitted ? 'form-submitted' : ''}`}
+            method='POST'
+            action='/'>
             <h2>Merchant</h2>
             <StyledFormGroup>
               <Input
@@ -233,7 +225,7 @@ class Index extends Component {
                 name='username'
                 onBlur={(e) => { this.handleUsernameCheck(e); }}
                 required
-                title={inputErrorMessage()}
+                title={this.state.usernameAlreadyExists ? this.errorMessages.userExists : this.errorMessages.required}
                 type='text'
               />
 
@@ -286,7 +278,7 @@ class Index extends Component {
                 name='email'
                 onBlur={(e) => { this.handleEmailCheck(e); }}
                 required
-                title={inputErrorMessage()}
+                title={this.state.emailAlreadyExists ? this.errorMessages.emailExists : this.errorMessages.required}
                 type='email'
               />
 
